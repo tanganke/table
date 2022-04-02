@@ -12,6 +12,8 @@ pip install git+https://github.com/tanganke/table
 #### first example:
 
 ```python
+from table import table
+
 for x,y,z in table(3,5,7):
   print((x,y,z))
 ```
@@ -39,9 +41,11 @@ for x in range(3):
 and this is equivalent to
 
 ```python
-from placeholder import _
+from table import table
 
-for x,y,z in table(('x',3), ('y',_.x+1, _x+5), ('z', _.x+_.y, 2*(_.x+_.y), 2)):
+for x,y,z in table(('x',3), 
+    ('y', lambda _: _.x+1, _.x+5), 
+    ('z', lambda _: _.x+_.y, lambda _: 2*(_.x+_.y), 2)):
   print((x,y,z))
 ```
 
