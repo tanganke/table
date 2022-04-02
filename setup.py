@@ -5,7 +5,6 @@ setup(
     version='0.1.0',
     author='Tang, Anke',
     install_requires=[
-        'placeholder',
         'numpy'
     ]
 )

@@ -1,5 +1,5 @@
 import pytest
-from sympy import im
+import numpy as np
 from table import table
 import random
 
@@ -20,3 +20,11 @@ def test_1():
 def test_1_repeat():
     for _ in range(1000):
         assert test_1()
+
+def test_circle_integrate():
+    ans = 0
+    delta = 1e-2
+    for x,y in table(('x',-1,1,delta),
+                     ('y',lambda _:-np.sqrt(1-_.x**2), lambda _: np.sqrt(1-_.x**2),delta)):
+        ans += delta**2
+    assert np.abs(ans-np.pi) < 1e-2
